@@ -59,12 +59,15 @@ const HomePage = () => {
               disabled={selectedFilters ? false : true}
             />
           </label>
-          <Select
-            defultValue={selectedFilters}
-            onChange={setSelectedFilters}
-            options={filters}
-          />
-          <Counter />
+          <div className={styles.filter}>
+            <Select
+              className={styles.select}
+              defultValue={selectedFilters}
+              onChange={setSelectedFilters}
+              options={filters}
+            />
+            <Counter />
+          </div>
         </form>
       </div>
     </div>
