@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import styles from "./homePage.module.css";
-import defaultImg from "./default-img.png";
+import defaultImg from "../../assets/default-img.png";
 
 const HomePage = () => {
   const [file, setFile] = useState([]);
