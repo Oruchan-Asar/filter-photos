@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
+import Select from "react-select";
 
 import styles from "./homePage.module.css";
 import defaultImg from "../../assets/default-img.png";
+import Counter from "../Counter/Counter";
+import filters from "./filters";
 
 const HomePage = () => {
   const [file, setFile] = useState([]);
   const [imgSrc, setImgSrc] = useState(defaultImg);
+  const [selectedFilters, setSelectedFilters] = useState();
 
   useEffect(() => {
     const update = async () => {
@@ -54,6 +58,12 @@ const HomePage = () => {
               accept=".jpg,.png,.jpeg"
             />
           </label>
+          <Select
+            defultValue={selectedFilters}
+            onChange={setSelectedFilters}
+            options={filters}
+          />
+          <Counter />
         </form>
       </div>
     </div>

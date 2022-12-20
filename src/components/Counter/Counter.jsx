@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
+import styles from "./counter.module.css";
 
 function Counter() {
-  // Declare a new state variable, which we'll call "count"
   const [count, setCount] = useState(0);
 
+  useEffect(
+    (prev) => {
+      setCount(prev + 1);
+    },
+    [count]
+  );
+
   return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>Increase count</button>
-      <button onClick={() => setCount(count - 1)}>Decrease count</button>
+    <div className={styles.counter}>
+      <button onClick={() => setCount(count + 1)}>+</button>
+      <p>Value {count}</p>
+      <button onClick={() => setCount(count - 1)}>-</button>
     </div>
   );
 }
