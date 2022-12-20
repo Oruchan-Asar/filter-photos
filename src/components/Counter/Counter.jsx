@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 import styles from "./counter.module.css";
 
-function Counter() {
-  const [count, setCount] = useState(0);
-
+function Counter({ count, setCount }) {
   const increaseCount = (prev) => {
     setCount(prev + 1);
   };

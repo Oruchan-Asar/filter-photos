@@ -10,6 +10,7 @@ const HomePage = () => {
   const [file, setFile] = useState([]);
   const [imgSrc, setImgSrc] = useState(defaultImg);
   const [selectedFilters, setSelectedFilters] = useState();
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     const update = async () => {
@@ -46,7 +47,13 @@ const HomePage = () => {
   return (
     <div className={styles.home}>
       <div className={styles.container}>
-        <img className={styles.image} src={imgSrc} alt="default-img.png" />
+        <img
+          className={[`${selectedFilters?.value}-${count}`, styles.image].join(
+            " "
+          )}
+          src={imgSrc}
+          alt="default-img.png"
+        />
         <form className={styles.form}>
           <label className={styles.upload_file}>
             <input
@@ -66,7 +73,7 @@ const HomePage = () => {
               onChange={setSelectedFilters}
               options={filters}
             />
-            <Counter />
+            <Counter count={count} setCount={setCount} />
           </div>
         </form>
       </div>
