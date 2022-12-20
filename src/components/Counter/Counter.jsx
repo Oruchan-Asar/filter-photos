@@ -1,22 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import styles from "./counter.module.css";
 
 function Counter() {
   const [count, setCount] = useState(0);
 
-  useEffect(
-    (prev) => {
-      setCount(prev + 1);
-    },
-    [count]
-  );
+  const increaseCount = (prev) => {
+    setCount(prev + 1);
+  };
+
+  const decreaseCount = (prev) => {
+    setCount(prev - 1);
+  };
 
   return (
     <div className={styles.counter}>
-      <button onClick={() => setCount(count + 1)}>+</button>
+      <input
+        type="button"
+        onClick={() => increaseCount(count)}
+        value="+"
+        disabled={count < 10 ? false : true}
+      />
       <p>Value {count}</p>
-      <button onClick={() => setCount(count - 1)}>-</button>
+      <input
+        type="button"
+        onClick={() => decreaseCount(count)}
+        value="-"
+        disabled={count > 0 ? false : true}
+      />
     </div>
   );
 }
