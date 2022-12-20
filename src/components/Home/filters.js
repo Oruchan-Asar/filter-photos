@@ -9,3 +9,5 @@ const filters = [
   "backdrop-blur",
   "opacity",
 ];
+
+export default filters;

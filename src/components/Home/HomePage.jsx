@@ -56,6 +56,7 @@ const HomePage = () => {
               alt="file input"
               onChange={handleFileInput}
               accept=".jpg,.png,.jpeg"
+              disabled={selectedFilters ? false : true}
             />
           </label>
           <Select
