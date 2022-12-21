@@ -14,16 +14,22 @@
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 10px;
-  width: 50vw;
-  height: 80vh;
+  max-width: 700px;
+  width: 50%;
+  height: 80%;
 }
 
 .image {
+  width: 90%;
+  height: 70%;
   object-fit: cover;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  width: 40vw;
-  height: 60vh;
   border-radius: 10px;
+}
+
+.formFile {
+  margin-top: 20px;
+  width: 80% !important;
 }
 
 .form {
@@ -38,10 +44,6 @@
   display: flex;
 }
 
-.upload_file {
-  display: flex;
-}
-
 .input,
 .input > * {
   display: flex;
@@ -50,6 +52,7 @@
 .filter {
   display: flex;
   align-items: center;
+  margin-top: 20px;
   gap: 10px;
 }
 
@@ -61,14 +64,22 @@
   border-radius: 5px;
 }
 
-@media only screen and (max-width: 1085px) {
+@media only screen and (max-width: 768px) {
   .container {
-    width: 70vw;
-    height: 90vh;
+    width: 90%;
   }
 
   .image {
-    width: 60vw;
-    height: 70vh;
+    height: 70%;
+  }
+
+  .filter {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1085px) {
+  .container {
+    width: 80%;
   }
 }

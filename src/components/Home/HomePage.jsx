@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import Select from "react-select";
+import { CFormInput } from "@coreui/react";
 
 import styles from "./homePage.module.css";
 import defaultImg from "../../assets/default-img.png";
 import Counter from "../Counter/Counter";
-import filters from "./filters";
+import SelectBox from "./SelectBox";
+import "@coreui/coreui/dist/css/coreui.min.css";
 
 const HomePage = () => {
   const [file, setFile] = useState([]);
   const [imgSrc, setImgSrc] = useState(defaultImg);
-  const [selectedFilters, setSelectedFilters] = useState();
+  const [selectedFilters, setSelectedFilters] = useState("");
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -48,34 +49,28 @@ const HomePage = () => {
     <div className={styles.home}>
       <div className={styles.container}>
         <img
-          className={[`${selectedFilters?.value}-${count}`, styles.image].join(
-            " "
-          )}
+          className={[
+            imgSrc !== defaultImg ? `${selectedFilters}-${count}` : "",
+            styles.image,
+          ].join(" ")}
           src={imgSrc}
-          alt="default-img.png"
+          alt="img"
         />
-        <form className={styles.form}>
-          <label className={styles.upload_file}>
-            <input
-              className={styles.input}
-              type="file"
-              name="fileInput"
-              alt="file input"
-              onChange={handleFileInput}
-              accept=".jpg,.png,.jpeg"
-              disabled={selectedFilters ? false : true}
-            />
-          </label>
-          <div className={styles.filter}>
-            <Select
-              className={styles.select}
-              defultValue={selectedFilters}
-              onChange={setSelectedFilters}
-              options={filters}
-            />
-            <Counter count={count} setCount={setCount} />
-          </div>
-        </form>
+        <CFormInput
+          className={styles.formFile}
+          type="file"
+          id="formFile"
+          accept=".jpg,.png,.jpeg"
+          disabled={selectedFilters ? false : true}
+          onChange={handleFileInput}
+        />
+        <div className={styles.filter}>
+          <SelectBox
+            setSelectedFilters={setSelectedFilters}
+            selectedFilters={selectedFilters}
+          />
+          <Counter count={count} setCount={setCount} />
+        </div>
       </div>
     </div>
   );

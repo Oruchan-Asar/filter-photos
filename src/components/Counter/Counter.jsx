@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import React from "react";
 
 import styles from "./counter.module.css";
@@ -13,19 +14,21 @@ function Counter({ count, setCount }) {
 
   return (
     <div className={styles.counter}>
-      <input
-        type="button"
-        onClick={() => increaseCount(count)}
-        value="+"
-        disabled={count < 10 ? false : true}
-      />
-      <p>Value {count}</p>
-      <input
-        type="button"
+      <Button
+        variant="contained"
         onClick={() => decreaseCount(count)}
-        value="-"
         disabled={count > 0 ? false : true}
-      />
+      >
+        -
+      </Button>
+      Value {count}
+      <Button
+        variant="contained"
+        onClick={() => increaseCount(count)}
+        disabled={count < 10 ? false : true}
+      >
+        +
+      </Button>
     </div>
   );
 }
