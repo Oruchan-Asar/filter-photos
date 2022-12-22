@@ -1,4 +1,4 @@
-`Link for preview`: [title](https://www.example.com)
+`Link for preview`: [to filter your photos](https://filfilter.netlify.app)
 
 In the project directory, you can run:
 
