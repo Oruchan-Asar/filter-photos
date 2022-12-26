@@ -1,7 +1,13 @@
-import { Button } from "@mui/material";
+import { Button, createTheme, ThemeProvider } from "@mui/material";
 import React from "react";
 
 import styles from "./counter.module.css";
+
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
 
 function Counter({ count, setCount }) {
   const increaseCount = (prev) => {
@@ -14,21 +20,23 @@ function Counter({ count, setCount }) {
 
   return (
     <div className={styles.counter}>
-      <Button
-        variant="contained"
-        onClick={() => decreaseCount(count)}
-        disabled={count > 0 ? false : true}
-      >
-        -
-      </Button>
-      Value {count}
-      <Button
-        variant="contained"
-        onClick={() => increaseCount(count)}
-        disabled={count < 10 ? false : true}
-      >
-        +
-      </Button>
+      <ThemeProvider theme={darkTheme}>
+        <Button
+          variant="contained"
+          onClick={() => decreaseCount(count)}
+          disabled={count > 0 ? false : true}
+        >
+          -
+        </Button>
+        <div className={styles.text}> Value {count}</div>
+        <Button
+          variant="contained"
+          onClick={() => increaseCount(count)}
+          disabled={count < 10 ? false : true}
+        >
+          +
+        </Button>
+      </ThemeProvider>
     </div>
   );
 }
